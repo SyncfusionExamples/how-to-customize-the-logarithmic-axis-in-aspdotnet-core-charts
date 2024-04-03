@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    List<ChartData> SalesData = new List<ChartData>()
+    {
+        new ChartData { Date = new DateTime(2015, 1, 1),  ProfitInfo = 80  },
+        new ChartData { Date = new DateTime(2016, 1, 1),  ProfitInfo = 200 },
+        new ChartData { Date = new DateTime(2017, 1, 1),  ProfitInfo = 400 },
+        new ChartData { Date = new DateTime(2018, 1, 1),  ProfitInfo = 600 },
+        new ChartData { Date = new DateTime(2019, 1, 1),  ProfitInfo = 700 },
+        new ChartData { Date = new DateTime(2020, 1, 1),  ProfitInfo = 1400 },
+        new ChartData { Date = new DateTime(2021, 1, 1),  ProfitInfo = 2000 },
+        new ChartData { Date = new DateTime(2022, 1, 1),  ProfitInfo = 4000 },
+        new ChartData { Date = new DateTime(2023, 1, 1),  ProfitInfo = 6000 },
+        new ChartData { Date = new DateTime(2024, 1, 1),  ProfitInfo = 8000 },
+        new ChartData { Date = new DateTime(2025, 1, 1),  ProfitInfo = 11000 }
+    };
+}
+
+<ejs-chart id="chart" title="Product Growth">
+    <e-chart-primaryxaxis valueType=DateTime labelFormat="y" title="Year"
+                          edgeLabelPlacement=Shift></e-chart-primaryxaxis>
+    <e-chart-primaryyaxis valueType=Logarithmic title="Profit"
+                          logBase=2
+                          labelFormat="${value}"></e-chart-primaryyaxis>
+                         @*  minimum=100
+                          maximum=1000000
+                          interval=2 *@
+    <e-series-collection>
+        <e-series type=Line
+                  dataSource="SalesData"
+                  xName="Date"
+                  yName="ProfitInfo">
+                  <e-series-marker visible=true></e-series-marker>
+        </e-series>
+    </e-series-collection>
+</ejs-chart>
